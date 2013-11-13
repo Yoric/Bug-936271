@@ -12,5 +12,5 @@ function go() {
   });
 }
 
-go();
+window.setTimeout(go, 100);
 
