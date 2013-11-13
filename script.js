@@ -8,7 +8,7 @@ function go() {
   button.addEventListener("click", function() {
     var content = frame.contentDocument;
     var input = content.getElementById("input");
-    input.value = "New value!";
+    input.value = "Not the default value";
   });
 }
 
