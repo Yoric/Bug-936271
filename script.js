@@ -1,16 +1,20 @@
-function go() {
+function go(title) {
+  console.log("Step 1", title);
   var frame = document.createElement("iframe");
   frame.src = "frame.html";
-  frame.id = "frame";
   document.body.appendChild(frame);
 
-  var button = document.getElementById("button");
-  button.addEventListener("click", function() {
+  frame.addEventListener("load", function() {
+    console.log("Step 2", title);
     var content = frame.contentDocument;
-    var input = content.getElementById("input");
-    input.value = "Not the default value";
+    var label = content.createElement("div");
+    label.textContent = title;
+    content.body.appendChild(label);
+
+    console.log("Step 3", title);
   });
 }
 
-window.setTimeout(go, 100);
+go("Inserted at startup");
+window.setTimeout(function() { go("Inserted after startup"); }, 100);
 
